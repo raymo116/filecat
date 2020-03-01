@@ -6,3 +6,4 @@ http://man7.org/linux/man-pages/man2/open.2.html
 https://stackoverflow.com/questions/238603/how-can-i-get-a-files-size-in-c
 https://en.wikipedia.org/wiki/C_dynamic_memory_allocation
 https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
+https://www.codingunit.com/c-tutorial-the-functions-malloc-and-free
