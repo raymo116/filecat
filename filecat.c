@@ -72,5 +72,8 @@ int main(int argc, char *argv[]) {
     close(sourceFile);
     close(destinationFile);
 
+    // Frees the memory from the character pointer
+    free(singleChar);
+
     return 0;
 }
