@@ -48,26 +48,29 @@ int main(int argc, char *argv[]) {
     int sourceFile = open(argv[1], O_RDONLY);
     int destinationFile = open(argv[2], O_WRONLY | O_APPEND);
 
-    // Finds the number of characters in the source file
-    int fileSize = lseek(sourceFile, 0L, SEEK_END);
-    // Resets the file reader to the begining
-    lseek(sourceFile, 0L, SEEK_SET);
+    // Checks to make sure that file was opened correctly
+    if (sourceFile == -1) {
+        printf("There was an error opening the first file\n");
+        return 1;
+    }
 
-    // Creates a character array the size of the file
-    char* charArray = malloc(fileSize * sizeof(char));
+    // Checks to make sure that the second file was opened correctly
+    if (destinationFile == -1) {
+        printf("There was an error opening the second file\n");
+        return 1;
+    }
 
-    // Reads all of the characters into the character array
-    read(sourceFile,charArray,fileSize);
+    // Creates a single char
+    char* singleChar = malloc(sizeof(char));
 
-    // Writes the characters to the destination file
-    write(destinationFile,charArray,fileSize);
+    // Goes through the entire file and reads/appends
+    while (read(sourceFile,singleChar,1)) {
+        write(destinationFile,singleChar,1);
+    }
 
     // Closes the files
     close(sourceFile);
     close(destinationFile);
-
-    // Frees up memory
-    free(charArray);
 
     return 0;
 }
